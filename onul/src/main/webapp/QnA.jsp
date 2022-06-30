@@ -1,164 +1,285 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!doctype html>
-<html lang="ko">
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, 그리고 Bootstrap 기여자들">
-    <meta name="generator" content="Hugo 0.88.1">
-    <title>Album example · Bootstrap v5.1</title>
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.98.0">
+    <title>Carousel Template · Bootstrap v5.2</title>
 
-    <link rel="canonical" href="https://getbootstrap.kr/docs/5.1/examples/album/">
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/carousel/">
 
-    
-
-    <!-- Bootstrap core CSS -->
+<!-- css -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+
     <!-- Favicons -->
-<link rel="apple-touch-icon" href="/docs/5.1/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
-<link rel="icon" href="/docs/5.1/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
-<link rel="icon" href="/docs/5.1/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
-<link rel="manifest" href="/docs/5.1/assets/img/favicons/manifest.json">
-<link rel="mask-icon" href="/docs/5.1/assets/img/favicons/safari-pinned-tab.svg" color="#7952b3">
-<link rel="icon" href="/docs/5.1/assets/img/favicons/favicon.ico">
-<meta name="theme-color" content="#7952b3">
+<link rel="apple-touch-icon" href="/docs/5.2/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+<link rel="icon" href="/docs/5.2/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="/docs/5.2/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+<link rel="manifest" href="/docs/5.2/assets/img/favicons/manifest.json">
+<link rel="mask-icon" href="/docs/5.2/assets/img/favicons/safari-pinned-tab.svg" color="#712cf9">
+<link rel="icon" href="/docs/5.2/assets/img/favicons/favicon.ico">
+<meta name="theme-color" content="#712cf9">
 
 
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
+ <style>
+   .bd-placeholder-img {
+     font-size: 1.125rem;
+     text-anchor: middle;
+     -webkit-user-select: none;
+     -moz-user-select: none;
+     user-select: none;
+   }
 
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
+   @media (min-width: 768px) {
+     .bd-placeholder-img-lg {
+       font-size: 3.5rem;
+     }
+   }
+      
+	
+   section{
+    	width: 100%;
+    	background-color:  #F7F9FA;
+    } 
+    
+    
+    
+    h1, p{
+    	color: #2F3438;
+    } 
+
+    .contents{
+    	width:750px;
+    	max-height:2028px;
+    	margin: 30px auto;
+    	position: relative;
+    }
+	
+    .my-1{
+    	width:300px;
+    	height:40px;
+    	background-color: #FFFFFF;
+    	border: 1px solid #EAEDEF;
+    	box-shadow: 0 2px 5px rgb(63 71 77 / 5%);
+    }
+    
+   
+    
+  	table{
+  		width:750px;
+  		height:126px;
+  	}
+  	
+  	table tr .notice{
+  		width:750px;
+  		height:60px;
+  		padding: 18px;
+  	}
+  	
+  	.notice_icon{
+		width:30px;
+		height:30px;
+  	}
+  	
+  	table tr .QnA{
+  		width:718px;
+  		height:126px;
+  	}
+  	
+	
+	
+	img{
+		border-radius:8px;
+		width:110px;
+		height:110px;
+	}
+	
+	 .info{
+    	margin: 16px 8px -5px 0;
+    	font-size: 12px;
+    	line-height: 16px;
+    	color: #828C94;
+    }
+    
+    .my-2{
+    	font-size: 12px;
+	    line-height: 20px;
+	    color: #2F3438;
+	    background-color: #FFFFFF;
+	    border: 1px solid #EAEDEF;
+    	border-radius:50px;
+    	padding: 2px 8px;
+    }
+    
+    .tag1{
+    	margin: 1px 10px 0 0;
+    	color: #35C5F0;
+    	background-color: #EFFBFF;
+    	font-weight: 700;
+    	border:none;
+    }
+	
+	input.form-control {
+		display:block;
+		}
     </style>
 
     
+    <!-- Custom styles for this template -->
+    <link href="carousel.css" rel="stylesheet">
   </head>
   <body>
- <%@ include file="include_header.jsp" %>   
-<header>
-  <div class="collapse bg-dark" id="navbarHeader">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-8 col-md-7 py-4">
-          <h4 class="text-white">About</h4>
-          <p class="text-muted">Add some information about the album below, the author, or any other background context. Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or contact information.</p>
-        </div>
-        <div class="col-sm-4 offset-md-1 py-4">
-          <h4 class="text-white">Contact</h4>
-          <ul class="list-unstyled">
-            <li><a href="#" class="text-white">Follow on Twitter</a></li>
-            <li><a href="#" class="text-white">Like on Facebook</a></li>
-            <li><a href="#" class="text-white">Email me</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="navbar navbar-dark bg-dark shadow-sm">
-    <div class="container">
-      <a href="#" class="navbar-brand d-flex align-items-center">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="me-2" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-        <strong>Album</strong>
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-    </div>
-  </div>
+    
+ 
+<header class="py-5">
+   <%@ include file="include_header.jsp" %>  
 </header>
 
 <main>
-
-  <section class="py-5 text-center container">
+  <section class="py-5 text-center ">
     <div class="row py-lg-5">
       <div class="col-lg-6 col-md-8 mx-auto">
-        <h1 class="fs-3 fw-bold">질문과 답변</h1>
-        <p class="fs-8 ">오늘의집 인테리어 고수들과 전문가들에게 조언을 받아보세요</p>
-        <div class="col-sm-6">
-        <form class="d-flex">
-          <input class="form-control me-1" type="search" placeholder="Search" aria-label="Search">
+        <h1 class="fs-3 py-lg-2 fw-bold">질문과 답변</h1>
+        <p class="fs-8 py-lg-2">오늘의집 인테리어 고수들과 전문가들에게 조언을 받아보세요</p>
+        <div class="py-lg-3">
+        <form>
+          <input class=" form-control my-1" type="search" placeholder="Search" aria-label="Search">
         </form>
         </div>
         <p>
-          <a href="#" class="btn btn-primary my-2" >#리모델링/올수리</a>
-          <a href="#" class="btn btn-secondary my-2">#20평대</a>
-          <a href="#" class="btn btn-primary my-2">#아파트</a>
-          <a href="#" class="btn btn-secondary my-2">#도배</a>
+          <a href="#" class="btn btn-light my-2 " >#리모델링/올수리</a>
+          <a href="#" class="btn btn-light my-2 ">#20평대</a>
+          <a href="#" class="btn btn-light my-2 ">#아파트</a>
+          <a href="#" class="btn btn-light my-2 ">#도배</a>
         </p>
       </div>
     </div>
   </section>
+  
 
-  <!-- START THE FEATURETTES -->
-
-    <hr class="featurette-divider">
-
-    <div class="row featurette">
-      <div class="col-md-7">
-        <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It’ll blow your mind.</span></h2>
-        <p class="lead">Some great placeholder content for the first featurette here. Imagine some exciting prose here.</p>
-      </div>
-      <div class="col-md-5">
-        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
-
-      </div>
-    </div>
-
-    <hr class="featurette-divider">
-
-    <div class="row featurette">
-      <div class="col-md-7 order-md-2">
-        <h2 class="featurette-heading">Oh yeah, it’s that good. <span class="text-muted">See for yourself.</span></h2>
-        <p class="lead">Another featurette? Of course. More placeholder content here to give you an idea of how this layout would work with some actual real-world content in place.</p>
-      </div>
-      <div class="col-md-5 order-md-1">
-        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
-
-      </div>
-    </div>
-
-    <hr class="featurette-divider">
-
-    <div class="row featurette">
-      <div class="col-md-7">
-        <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
-        <p class="lead">And yes, this is the last block of representative placeholder content. Again, not really intended to be actually read, simply here to give you a better view of what this would look like with some actual content. Your content.</p>
-      </div>
-      <div class="col-md-5">
-        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
-
-      </div>
-    </div>
-
-    <hr class="featurette-divider">
-
-    <!-- /END THE FEATURETTES -->
-
+  <div class="container contents">
+    <!-- START THE FEATURETTES -->
+	    <button type="button" class="btn btn-light">최신순</button>
+		<button type="button" class="btn btn-light">답변을 기다리는 질문</button>
+		<button type="button" class="btn btn-info">질문하기</button>
+   <table class="table">
+	 	<tbody>
+	 	<tr class="py-lg-3 notice">
+	      <td>  
+		     <span href="#" class="my-2 tag1">공지</span>
+		     <span class="fw-bold fs-6">답변 이벤트 안내 및 활동 주의사항 <img class="notice_icon" src="images/notice01.png" alt="확성기" ></span>
+	      </td>
+	      <td>
+	      </td>
+	    </tr>
+	    
+	    <c:forEach var="board" items="${boardList }">
+	     <tr class="py-lg-3 QnA">
+	      <td>  
+		      <div>
+				<h2 class="lead py-lg-3 fw-bold">당근마켓 뜻이 뭔가요? (왜 당근마켓인가요?)</h2>
+			    <p class="featurette-heading fw-normal py-lg-1">
+			        현재는 직거래 뿐만 아니라 여러분의 근처에서 생기는 다양한 일을 해결할 수 있는 서비스를 꿈꾸고 있어요.
+					뿐만 아니라 '당근'의 건강한 이미지도 담아봤어요. '당근'처럼 건강한 서비스가 될 수 있도록 최선을 다할게요!
+				</p>
+				<span class="info">${board.name }</span>
+				<span class="info">날짜<fmt:formatDate value="${board.writedate }"/></span>
+				<span class="info">조회${board.readcount }</span>
+				<div>
+					<a href="#" class="btn btn-light my-2">#도배</a>
+					<a href="#" class="btn btn-light my-2 tag1" >#리모델링/올수리</a>
+			        <a href="#" class="btn btn-light my-2 tag1">#20평대</a>
+			        <a href="#" class="btn btn-light my-2 tag1">#아파트</a>
+		        </div>
+			  </div>
+		  </td>
+	      <td class="py-lg-4">
+	      	<img src="images/QnA1.jpg" alt="" >
+	      </td>
+	    </tr>
+	    <tr class="py-lg-3 QnA">
+	      <td>  
+		      <div>
+				<h2 class="lead py-lg-3 fw-bold">당근마켓 뜻이 뭔가요? (왜 당근마켓인가요?)</h2>
+			    <p class="featurette-heading fw-normal py-lg-1">
+			        현재는 직거래 뿐만 아니라 여러분의 근처에서 생기는 다양한 일을 해결할 수 있는 서비스를 꿈꾸고 있어요.
+					뿐만 아니라 '당근'의 건강한 이미지도 담아봤어요. '당근'처럼 건강한 서비스가 될 수 있도록 최선을 다할게요!
+				</p>
+				<span class="info">${board.name }</span>
+				<span class="info">날짜<fmt:formatDate value="${board.writedate }"/></span>
+				<span class="info">조회${board.readcount }</span>
+				<div>
+					<a href="#" class="btn btn-light my-2 tag2">#도배</a>
+					<a href="#" class="btn btn-light my-2 tag1" >#리모델링/올수리</a>
+			        <a href="#" class="btn btn-light my-2 tag1">#20평대</a>
+			        <a href="#" class="btn btn-light my-2 tag1">#아파트</a>
+		        </div>
+			  </div>
+		  </td>
+	      <td class="py-lg-4">
+	      	<img src="images/QnA2.jpg" alt="" >
+	      </td>
+	    </tr>
+	    <tr class="py-lg-3 QnA ">
+	      <td>  
+		      <div>
+				<h2 class="lead py-lg-3 fw-bold">당근마켓 뜻이 뭔가요? (왜 당근마켓인가요?)</h2>
+			    <p class="featurette-heading fw-normal py-lg-1">
+			        현재는 직거래 뿐만 아니라 여러분의 근처에서 생기는 다양한 일을 해결할 수 있는 서비스를 꿈꾸고 있어요.
+					뿐만 아니라 '당근'의 건강한 이미지도 담아봤어요. '당근'처럼 건강한 서비스가 될 수 있도록 최선을 다할게요!
+				</p>
+				<span class="info">${board.name }</span>
+				<span class="info">날짜<fmt:formatDate value="${board.writedate }"/></span>
+				<span class="info">조회${board.readcount }</span>
+				<div>
+					<a href="#" class="btn btn-light my-2 tag2">#도배</a>
+					<a href="#" class="btn btn-light my-2 tag1" >#리모델링/올수리</a>
+			        <a href="#" class="btn btn-light my-2 tag1">#20평대</a>
+			        <a href="#" class="btn btn-light my-2 tag1">#아파트</a>
+		        </div>
+			  </div>
+		  </td>
+	      <td class="py-lg-4">
+	      	<img src="images/QnA3.jpg" alt="" >
+	      </td>
+	    </tr>
+	   	<tr class="py-lg-3 QnA">
+	      <td>  
+		      <div>
+				<h2 class="lead py-lg-3 fw-bold">당근마켓 뜻이 뭔가요? (왜 당근마켓인가요?)</h2>
+			    <p class="featurette-heading fw-normal py-lg-1">
+			        현재는 직거래 뿐만 아니라 여러분의 근처에서 생기는 다양한 일을 해결할 수 있는 서비스를 꿈꾸고 있어요.
+					뿐만 아니라 '당근'의 건강한 이미지도 담아봤어요. '당근'처럼 건강한 서비스가 될 수 있도록 최선을 다할게요!
+				</p>
+				<span class="info">${board.name }</span>
+				<span class="info">날짜<fmt:formatDate value="${board.writedate }"/></span>
+				<span class="info">조회${board.readcount }</span>
+				<div>
+					<a href="#" class="btn btn-light my-2 tag2">#도배</a>
+					<a href="#" class="btn btn-light my-2 tag1" >#리모델링/올수리</a>
+			        <a href="#" class="btn btn-light my-2 tag1">#20평대</a>
+			        <a href="#" class="btn btn-light my-2 tag1">#아파트</a>
+		        </div>
+			  </div>
+		  </td>
+	      <td class="py-lg-4">
+	      	<img src="images/QnA4.jpg" alt="" >
+	      </td>
+	    </tr>
+	    </c:forEach>
+	     
+	  </tbody>
+	</table>
   </div><!-- /.container -->
- </main>
+	<footer class=" py-7">
+	<%@ include file="include_footer.jsp" %> 
+	</footer>
+</main>
 
-<footer class="text-muted py-5">
-  <div class="container">
-    <p class="float-end mb-1">
-      <a href="#">Back to top</a>
-    </p>
-    <p class="mb-1">Album example is &copy; Bootstrap, but please download and customize it for yourself!</p>
-    <p class="mb-0">New to Bootstrap? <a href="/">Visit the homepage</a> or read our <a href="/docs/5.1/getting-started/introduction/">getting started guide</a>.</p>
-  </div>
-</footer>
-
-<%@ include file="include_footer.jsp" %> 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-      
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
   </body>
 </html>
