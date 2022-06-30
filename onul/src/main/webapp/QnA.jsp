@@ -60,7 +60,7 @@
     }
 	
     .my-1{
-    	width:300px;
+    	display: block;
     	height:40px;
     	background-color: #FFFFFF;
     	border: 1px solid #EAEDEF;
@@ -70,6 +70,7 @@
    
     
   	table{
+  		margin-top: 30px;
   		width:750px;
   		height:126px;
   	}
@@ -80,9 +81,12 @@
   		padding: 18px;
   	}
   	
+  	
   	.notice_icon{
-		width:30px;
-		height:30px;
+		width:20px;
+		height:20px;
+		border-radius:0px;
+		margin-top:-8px
   	}
   	
   	table tr .QnA{
@@ -90,8 +94,6 @@
   		height:126px;
   	}
   	
-	
-	
 	img{
 		border-radius:8px;
 		width:110px;
@@ -123,9 +125,7 @@
     	border:none;
     }
 	
-	input.form-control {
-		display:block;
-		}
+	
     </style>
 
     
@@ -140,6 +140,7 @@
 </header>
 
 <main>
+<!-- 검색 -->
   <section class="py-5 text-center ">
     <div class="row py-lg-5">
       <div class="col-lg-6 col-md-8 mx-auto">
@@ -147,7 +148,7 @@
         <p class="fs-8 py-lg-2">오늘의집 인테리어 고수들과 전문가들에게 조언을 받아보세요</p>
         <div class="py-lg-3">
         <form>
-          <input class=" form-control my-1" type="search" placeholder="Search" aria-label="Search">
+          <input class=" form-control my-1" type="search" placeholder="Search" aria-label="궁금한 것을 검색해보세요.">
         </form>
         </div>
         <p>
@@ -160,29 +161,70 @@
     </div>
   </section>
   
-
+<!-- 최신순, 미답변, 질문하기 버튼 -->
   <div class="container contents">
     <!-- START THE FEATURETTES -->
-	    <button type="button" class="btn btn-light">최신순</button>
-		<button type="button" class="btn btn-light">답변을 기다리는 질문</button>
-		<button type="button" class="btn btn-info">질문하기</button>
-   <table class="table">
+	  <div class="row">
+	    <div class="col-sm-8">
+				<div class="dropdown">
+			  <button class="btn btn-light btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+			    인기순
+			  </button>
+			  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+			    <li><a class="dropdown-item" href="#">최신순</a></li>
+			    <li><a class="dropdown-item" href="#">최근답변수</a></li>
+			  </ul>
+			</div>
+	    </div>
+	    <div class="col-sm-2">
+			<button type="button" class="btn btn-light btn-outline-secondary">
+			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+			  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+			  <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
+			</svg>
+			 미답변 
+			</button>
+	    </div>
+	    <div class="col-sm-2">
+	     	<button type="button" class="btn btn-info">질문하기</button>
+	    </div>
+	  </div>
+	 
+
+<!-- 공지, QnA 테이블 -->
+   <table class="table table-hover">
 	 	<tbody>
-	 	<tr class="py-lg-3 notice">
-	      <td>  
+	 	<tr class=" notice">
+	      <td class="py-lg-3">  
 		     <span href="#" class="my-2 tag1">공지</span>
 		     <span class="fw-bold fs-6">답변 이벤트 안내 및 활동 주의사항 <img class="notice_icon" src="images/notice01.png" alt="확성기" ></span>
 	      </td>
 	      <td>
 	      </td>
 	    </tr>
+	   	<tr class="py-lg-3 notice">
+	      <td class="py-lg-3">  
+		     <span href="#" class="my-2 tag1">공지</span>
+		     <span class="fw-bold fs-6">빠르고 정확한 인테리어 답변을 받는 방법은?</span>
+	      </td>
+	      <td>
+	      </td>
+	    </tr>
+	    <tr class="py-lg-3 notice">
+	      <td class="py-lg-3">  
+		     <span href="#" class="my-2 tag1">공지</span>
+		     <span class="fw-bold fs-6">다시 돌아온 7월 멘토 모집 <img class="notice_icon" src="images/notice02.png" alt="발표하는 사람" ></span>
+	      </td>
+	      <td>
+	      </td>
+	    </tr>
 	    
 	    <c:forEach var="board" items="${boardList }">
-	     <tr class="py-lg-3 QnA">
-	      <td>  
+	     <tr class="QnA">
+	      <td class="py-lg-4">  
 		      <div>
-				<h2 class="lead py-lg-3 fw-bold">당근마켓 뜻이 뭔가요? (왜 당근마켓인가요?)</h2>
-			    <p class="featurette-heading fw-normal py-lg-1">
+				<h2 class="lead py-lg-2 fw-bold">김치냉장고 자리 추천해주세요</h2>
+			    <p class="featurette-heading fw-normal py-lg-1 lh-base">
 			        현재는 직거래 뿐만 아니라 여러분의 근처에서 생기는 다양한 일을 해결할 수 있는 서비스를 꿈꾸고 있어요.
 					뿐만 아니라 '당근'의 건강한 이미지도 담아봤어요. '당근'처럼 건강한 서비스가 될 수 있도록 최선을 다할게요!
 				</p>
@@ -191,9 +233,8 @@
 				<span class="info">조회${board.readcount }</span>
 				<div>
 					<a href="#" class="btn btn-light my-2">#도배</a>
-					<a href="#" class="btn btn-light my-2 tag1" >#리모델링/올수리</a>
-			        <a href="#" class="btn btn-light my-2 tag1">#20평대</a>
-			        <a href="#" class="btn btn-light my-2 tag1">#아파트</a>
+					<a href="#" class="btn btn-light my-2" >#리모델링/올수리</a>
+			        <a href="#" class="btn btn-light my-2">#20평대</a>
 		        </div>
 			  </div>
 		  </td>
@@ -201,11 +242,11 @@
 	      	<img src="images/QnA1.jpg" alt="" >
 	      </td>
 	    </tr>
-	    <tr class="py-lg-3 QnA">
-	      <td>  
+	    <tr class="QnA">
+	      <td class="py-lg-4">  
 		      <div>
-				<h2 class="lead py-lg-3 fw-bold">당근마켓 뜻이 뭔가요? (왜 당근마켓인가요?)</h2>
-			    <p class="featurette-heading fw-normal py-lg-1">
+				<h2 class="lead py-lg-2 fw-bold">당근마켓 뜻이 뭔가요? (왜 당근마켓인가요?)</h2>
+			    <p class="featurette-heading fw-normal py-lg-1 lh-base">
 			        현재는 직거래 뿐만 아니라 여러분의 근처에서 생기는 다양한 일을 해결할 수 있는 서비스를 꿈꾸고 있어요.
 					뿐만 아니라 '당근'의 건강한 이미지도 담아봤어요. '당근'처럼 건강한 서비스가 될 수 있도록 최선을 다할게요!
 				</p>
@@ -213,10 +254,8 @@
 				<span class="info">날짜<fmt:formatDate value="${board.writedate }"/></span>
 				<span class="info">조회${board.readcount }</span>
 				<div>
-					<a href="#" class="btn btn-light my-2 tag2">#도배</a>
-					<a href="#" class="btn btn-light my-2 tag1" >#리모델링/올수리</a>
-			        <a href="#" class="btn btn-light my-2 tag1">#20평대</a>
-			        <a href="#" class="btn btn-light my-2 tag1">#아파트</a>
+			        <a href="#" class="btn btn-light my-2">#20평대</a>
+			        <a href="#" class="btn btn-light my-2">#아파트</a>
 		        </div>
 			  </div>
 		  </td>
@@ -224,11 +263,11 @@
 	      	<img src="images/QnA2.jpg" alt="" >
 	      </td>
 	    </tr>
-	    <tr class="py-lg-3 QnA ">
-	      <td>  
+	    <tr class="QnA ">
+	      <td class="py-lg-4">  
 		      <div>
-				<h2 class="lead py-lg-3 fw-bold">당근마켓 뜻이 뭔가요? (왜 당근마켓인가요?)</h2>
-			    <p class="featurette-heading fw-normal py-lg-1">
+				<h2 class="lead py-lg-2 fw-bold">3평대 방 구조(290*370)</h2>
+			    <p class="featurette-heading fw-normal py-lg-1 lh-base">
 			        현재는 직거래 뿐만 아니라 여러분의 근처에서 생기는 다양한 일을 해결할 수 있는 서비스를 꿈꾸고 있어요.
 					뿐만 아니라 '당근'의 건강한 이미지도 담아봤어요. '당근'처럼 건강한 서비스가 될 수 있도록 최선을 다할게요!
 				</p>
@@ -236,10 +275,9 @@
 				<span class="info">날짜<fmt:formatDate value="${board.writedate }"/></span>
 				<span class="info">조회${board.readcount }</span>
 				<div>
-					<a href="#" class="btn btn-light my-2 tag2">#도배</a>
-					<a href="#" class="btn btn-light my-2 tag1" >#리모델링/올수리</a>
-			        <a href="#" class="btn btn-light my-2 tag1">#20평대</a>
-			        <a href="#" class="btn btn-light my-2 tag1">#아파트</a>
+					<a href="#" class="btn btn-light my-2">#도배</a>
+					<a href="#" class="btn btn-light my-2" >#리모델링/올수리</a>
+			        <a href="#" class="btn btn-light my-2">#20평대</a>
 		        </div>
 			  </div>
 		  </td>
@@ -247,11 +285,11 @@
 	      	<img src="images/QnA3.jpg" alt="" >
 	      </td>
 	    </tr>
-	   	<tr class="py-lg-3 QnA">
-	      <td>  
+	   	<tr class="QnA">
+	      <td class="py-lg-4">  
 		      <div>
-				<h2 class="lead py-lg-3 fw-bold">당근마켓 뜻이 뭔가요? (왜 당근마켓인가요?)</h2>
-			    <p class="featurette-heading fw-normal py-lg-1">
+				<h2 class="lead py-lg-2 fw-bold">안방에둘 중 어떤걸 두면 좋을까요?</h2>
+			    <p class="featurette-heading fw-normal py-lg-1 lh-base">
 			        현재는 직거래 뿐만 아니라 여러분의 근처에서 생기는 다양한 일을 해결할 수 있는 서비스를 꿈꾸고 있어요.
 					뿐만 아니라 '당근'의 건강한 이미지도 담아봤어요. '당근'처럼 건강한 서비스가 될 수 있도록 최선을 다할게요!
 				</p>
@@ -259,10 +297,7 @@
 				<span class="info">날짜<fmt:formatDate value="${board.writedate }"/></span>
 				<span class="info">조회${board.readcount }</span>
 				<div>
-					<a href="#" class="btn btn-light my-2 tag2">#도배</a>
-					<a href="#" class="btn btn-light my-2 tag1" >#리모델링/올수리</a>
-			        <a href="#" class="btn btn-light my-2 tag1">#20평대</a>
-			        <a href="#" class="btn btn-light my-2 tag1">#아파트</a>
+					<a href="#" class="btn btn-light my-2" >#리모델링/올수리</a>
 		        </div>
 			  </div>
 		  </td>
@@ -274,8 +309,9 @@
 	     
 	  </tbody>
 	</table>
-  </div><!-- /.container -->
-	<footer class=" py-7">
+  </div>
+ <!-- /공지,QnA 테이블 끝-->
+	<footer >
 	<%@ include file="include_footer.jsp" %> 
 	</footer>
 </main>

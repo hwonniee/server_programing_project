@@ -32,7 +32,12 @@
 		<link>
 			<name>src/main/webapp/images/notice01.png</name>
 			<type>1</type>
-			<location>C:/Users/home/Desktop/notice.png</location>
+			<location>C:/Users/home/Desktop/notice01.png</location>
+		</link>
+		<link>
+			<name>src/main/webapp/images/notice02.png</name>
+			<type>1</type>
+			<location>C:/Users/home/Desktop/notice02.png</location>
 		</link>
 	</linkedResources>
 </projectDescription>
