@@ -240,9 +240,11 @@
 				 미답변 
 				</button>
 			</div>
+			<form name="frm" method="post" action="boardWriteAction.jsp">
 				<div class="col-sm-2">
-					<a href="BoardServlet?command=board_write_form"><button type="button" class="btn btn-info">질문하기</button></a>
+					<a href="BoardServlet?command=board_write_form"><button type="submit" class="btn btn-info">질문하기</button></a>
 				</div>
+			</form>
 		  </div>
 		 
 	
@@ -276,8 +278,10 @@
 			
 			<c:forEach var="board" items="${boardList }">
 			 <tr class="QnA">
+			
 			  <td class="py-lg-4">  
 				  <div>
+					<a href="BoardServlet?command=board_view&num=${board.num }&currPage=${pageHandler.currPage}&searchType=${searchVO.searchType}&searchText=${searchVO.searchText}">
 					<h2 class="lead py-lg-2 fw-bold">${board.title }</h2>
 					<p class="featurette-heading fw-normal py-lg-1 lh-base">
 					  ${board.content }
@@ -285,6 +289,8 @@
 					<span class="info">${board.name }</span>
 					<span class="info">날짜<fmt:formatDate value="${board.writedate }"/></span>
 					<span class="info">조회${board.readcount }</span>
+					</a>
+					
 					<div>
 						<a href="#" class="btn btn-light my-2">#도배</a>
 						<a href="#" class="btn btn-light my-2" >#리모델링/올수리</a>

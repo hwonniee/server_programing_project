@@ -78,7 +78,7 @@
       <ul class="navigation">
         <li class="nav"><a href="#slider">바로가기</a></li>
         <li class="nav"><a href="#icons">오늘의 딜</a></li>
-        <!--  <li class="nav"><a href="QnA.jsp">질문과 답변</a></li>  -->
+        <!--  <li class="nav"><a href="boardList.jsp">질문과 답변</a></li>  -->
         <li class="nav"><a href="BoardServlet?command=board_list">질문과 답변</a></li>
         <li class="nav"><a href="notice.jsp">공지사항</a></li>
         <li class="nav"><a href="submit.jsp" >나의 당근마켓</a></li>

@@ -55,7 +55,7 @@
 
     
   </head>
-  <body >
+  <body>
     
 <header>
 <%@ include file="include_header2.jsp" %>  
@@ -80,9 +80,9 @@
   
   <div class="container">
 	<div class="row">
-	<div id="wrap" align="center" >
+	<div id="wrap" align="center">
 		
-		<form name="frm" method="post" action="boardWriteAction.jsp" action="BoardServlet">
+		<form name="frm" method="post" action="BoardServlet">
 			<input type="hidden" name="command" value="board_write">
 			<table class="table" style="text-align:center; border: 1px solid #dddddd">
 				<thead>
@@ -97,7 +97,6 @@
 						<td><input type="text" class="form-control" required autofocus placeholder="작성자" name="name"> * 필수</td>
 					</tr>
 					<tr>
-
 						<th>비밀번호</th>
 						<td><input type="password" class="form-control" required autofocus placeholder="비밀번호" name="pass">
 							* 필수 (게시물 수정 삭제시 필요합니다.)
