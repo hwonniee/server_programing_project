@@ -12,7 +12,14 @@ public class BoardVO {
 	private int readcount;
 	private Timestamp writedate;
 	private String img;
+	private String Available;
 	
+	public String getAvailable() {
+		return Available;
+	}
+	public void setAvailable(String available) {
+		Available = available;
+	}
 	public String getImg() {
 		return img;
 	}

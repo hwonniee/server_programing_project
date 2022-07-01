@@ -120,7 +120,7 @@ public class BoardDAO {
 	// 게시글 등록
 	public void insertBoard(BoardVO bVo) {
 		String sql = "INSERT INTO BOARD(NAME, EMAIL, PASS, TITLE, CONTENT, IMG) " +
-				"VALUES(?,?,?,?,?)";
+				"VALUES(?,?,?,?,?,?)";
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;

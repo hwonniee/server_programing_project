@@ -21,6 +21,7 @@ public class BoardWriteAction implements Action {
 		bVo.setEmail(request.getParameter("email"));
 		bVo.setTitle(request.getParameter("title"));
 		bVo.setContent(request.getParameter("content"));
+		bVo.setContent(request.getParameter("img"));
 		
 		// DB에 게시글 등록
 		BoardDAO bDao = BoardDAO.getInstance();
