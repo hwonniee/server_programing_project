@@ -23,9 +23,9 @@ public class BoardCheckPassAction implements Action {
 		BoardVO bVo = bDao.selectOneBoardByNum(num);
 		
 		if(bVo.getPass().equals(pass)) {	// 성공
-			url = "/board/checkSucess.jsp";
+			url = "checkSucess.jsp";
 		} else {	// 실패
-			url = "/board/boardCheckPass.jsp";
+			url = "boardCheckPass.jsp";
 			request.setAttribute("message", "비밀번호가 틀렸습니다.");
 		}
 		

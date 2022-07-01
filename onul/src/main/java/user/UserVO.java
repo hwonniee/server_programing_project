@@ -2,47 +2,49 @@ package user;
 
 public class UserVO {
 	private String userId;
-	private String pwd;
-	private String name;
-	private String birth;
-	private String tel;
-	private String addr;
+	private String userPwd;
+	private String userName;
+	private String userBirth;
+	private String userTel;
+	private String userAddr;
+	
 	public String getUserId() {
 		return userId;
 	}
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
-	public String getPwd() {
-		return pwd;
+	public String getUserPwd() {
+		return userPwd;
 	}
-	public void setPwd(String pwd) {
-		this.pwd = pwd;
+	public void setUserPwd(String userPwd) {
+		this.userPwd = userPwd;
 	}
-	public String getName() {
-		return name;
+	public String getUserName() {
+		return userName;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
-	public String getBirth() {
-		return birth;
+	public String getUserBirth() {
+		return userBirth;
 	}
-	public void setBirth(String birth) {
-		this.birth = birth;
+	public void setUserBirth(String userBirth) {
+		this.userBirth = userBirth;
 	}
-	public String getTel() {
-		return tel;
+	public String getUserTel() {
+		return userTel;
 	}
-	public void setTel(String tel) {
-		this.tel = tel;
+	public void setUserTel(String userTel) {
+		this.userTel = userTel;
 	}
-	public String getAddr() {
-		return addr;
+	public String getUserAddr() {
+		return userAddr;
 	}
-	public void setAddr(String addr) {
-		this.addr = addr;
+	public void setUserAddr(String userAddr) {
+		this.userAddr = userAddr;
 	}
+	
 	
 	
 }

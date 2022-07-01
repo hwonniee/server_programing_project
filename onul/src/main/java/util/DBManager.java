@@ -14,7 +14,7 @@ public class DBManager {
 		
 		Connection conn = null;
 		
-		String url = "jdbc:mysql://localhost:3306/userDB";
+		String url = "jdbc:mysql://localhost:3306/homeDB";
 		String user = "root";
 		String password = "0000";
 		

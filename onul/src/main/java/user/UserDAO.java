@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import com.board.vo.BoardVO;
+
 
 public class UserDAO {
 	private Connection conn;
@@ -24,15 +24,15 @@ public class UserDAO {
 			e.printStackTrace();
 		}
 	}
-	public int login(String userId, String pwd) {
-		String SQL = "SELECT PWD FROM USER WHERE USERID = ?";
+	public int login(String userId, String userPwd) {
+		String SQL = "SELECT USERPWD FROM USER WHERE USERID = ?";
 
 		try {
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, userId);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
-				if(rs.getString(1).equals(pwd)) 
+				if(rs.getString(1).equals(userPwd)) 
 					return 1; // 로그인 성공
 				else 
 					return 0;	//비밀번호 불일치
@@ -41,7 +41,44 @@ public class UserDAO {
 			
 		}catch(Exception e) {
 			e.printStackTrace();
-		}
+		}finally {
+			try {
+				if(conn != null) {
+					conn.close();}
+				} catch (Exception ex) {
+					ex.printStackTrace();
+					}
+			try {
+				if(rs != null)   {
+					rs.close();}
+				}   catch (Exception ex) {
+					ex.printStackTrace();
+					}
+			try {
+				if(pstmt != null){
+					pstmt.close();}
+				}catch (Exception ex) {
+					ex.printStackTrace();
+					}
+}
 		return -2; //데이터베이스 오류
+	}
+
+// 회원가입
+	public int join(UserVO user) {
+		String SQL = "INSERT INTO USER VALUES (?, ?, ?, ?, ?, ?)";
+		try {
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, user.getUserId());
+			pstmt.setString(2, user.getUserPwd());
+			pstmt.setString(3, user.getUserName());
+			pstmt.setString(4, user.getUserBirth());
+			pstmt.setString(5, user.getUserTel());
+			pstmt.setString(6, user.getUserAddr());
+			return pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return -1; //데이터베이스 오류
 	}
 }

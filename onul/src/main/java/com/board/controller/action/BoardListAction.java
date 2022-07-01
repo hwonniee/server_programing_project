@@ -18,7 +18,7 @@ public class BoardListAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url = "/board/boardList.jsp";
+		String url = "boardList.jsp";
 		
 		BoardDAO bDao = BoardDAO.getInstance();
 		
@@ -38,7 +38,7 @@ public class BoardListAction implements Action {
 		int pageSize = 0;
 		String pageSizeStr = request.getParameter("pageSize");
 		if(pageSizeStr == null) {
-			pageSize = 10;
+			pageSize = 9;
 		} else {
 			pageSize = Integer.parseInt(pageSizeStr);
 		}

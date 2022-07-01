@@ -11,7 +11,14 @@ public class BoardVO {
 	private String content;
 	private int readcount;
 	private Timestamp writedate;
+	private String img;
 	
+	public String getImg() {
+		return img;
+	}
+	public void setImg(String img) {
+		this.img = img;
+	}
 	public int getNum() {
 		return num;
 	}

@@ -10,8 +10,7 @@
 }
 
 #signup .logo_image{
-    width: 50px;
-    height: 50.11px;
+    width: 49px;
 }
 
 #signup .logo{
@@ -68,7 +67,6 @@
 
 #signup .join_sns{
     margin-left: 70px;
-    border-bottom: 1px solid #ededed;
 }
 
 fieldset p{
@@ -158,9 +156,8 @@ fieldset p a{
     font-weight: bold;
 }
 #joinup .join_sns{
-    margin: 10px auto 30px;
+    margin: 10px auto 20px;
     text-align: center;
-    
     color: #c2c8cc;
     font-size: 14px;
     line-height: 18px;
@@ -179,12 +176,16 @@ fieldset p a{
 /*join*/
 #joinup{
     width: 360px;
-    margin: 70px auto 0px;
+    margin: 0 auto;
     display: block;
     
 }
+#joinup .logo img{
+	width: 30px;
+    margin-right: 10px;
+}
 #joinup .logo a{
-   margin-bottom: 20px;
+   margin-bottom: 50px;
    display: block;
    letter-spacing: -4px;
 }
@@ -199,7 +200,6 @@ fieldset p a{
     text-align: left;
     margin: 7px 0;
     font-weight: bold;
-    color: #666;
     display:block;
 }
 #joinup li{
@@ -262,8 +262,8 @@ h3.gotologin{
 	font-weight:normal;
 	margin-top:20px;
 }
-h3.gotologin > b{
-	text-decoration:underline;
+.gotologin a{
+	text-decoration: underline;
 	font-weight:bold;
 }
 #joinup .agreement p{
@@ -308,4 +308,7 @@ h3.gotologin > b{
     font-size: 1.5em;
     
 }
-
+#joinup .textS{
+	font-size:13px;
+	color:#666;
+}

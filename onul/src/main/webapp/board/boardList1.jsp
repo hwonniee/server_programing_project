@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>  
 <!doctype html>
 <html lang="en">
   <head>
@@ -14,8 +16,7 @@
 <!-- css -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
-
-    <!-- Favicons -->
+<!-- Favicons -->
 <link rel="apple-touch-icon" href="/docs/5.2/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
 <link rel="icon" href="/docs/5.2/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
 <link rel="icon" href="/docs/5.2/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
@@ -24,6 +25,33 @@
 <link rel="icon" href="/docs/5.2/assets/img/favicons/favicon.ico">
 <meta name="theme-color" content="#712cf9">
 
+<script src="script/jquery-3.6.0.js"></script>
+<script>
+	$(document).ready(function(){
+		$form = $("form[name='searchForm']");
+		// 페이지 번호 클릭 시 검색결과 유지하기 위함
+		$(".page-item > a").on("click", function(e){
+			e.preventDefault();	// 이벤트 전파 방지, <a>의 기본 클릭 이벤트 막기위함
+			// 현재 페이지번호 설정
+			$form.find("input[name='currPage']").val($(this).data("page"));
+			$form.submit();			
+		});
+		
+		// 검색 버튼 클릭 시 페이지 번호 1부터 시작하기 위함
+		$form.find("input[type='submit']").on("click", function(e){
+			e.preventDefault();
+			$form.find("input[name='currPage']").val(1);
+			$form.submit();
+		});
+		
+		// eclipse 내부 브라우저 한글처리 오류때문에 인코딩해서 이동시킴
+		$(".record").find("a").on("click", function(e){
+			e.preventDefault();
+			var uri = $(this).attr("href");
+			location.href = encodeURI(uri);
+		});
+	});
+</script>
 
  <style>
    .bd-placeholder-img {
@@ -82,7 +110,7 @@
   	}
   	
   	
-  	.notice_icon{
+  	table .notice_icon{
 		width:20px;
 		height:20px;
 		border-radius:0px;
@@ -94,7 +122,7 @@
   		height:126px;
   	}
   	
-	img{
+	table td img{
 		border-radius:8px;
 		width:110px;
 		height:110px;
@@ -136,7 +164,7 @@
     
  
 <header class="py-5">
-   <%@ include file="include_header.jsp" %>  
+   <%@ include file="../include_header.jsp" %>  
 </header>
 
 <main>
@@ -146,11 +174,28 @@
       <div class="col-lg-6 col-md-8 mx-auto">
         <h1 class="fs-3 py-lg-2 fw-bold">질문과 답변</h1>
         <p class="fs-8 py-lg-2">오늘의집 인테리어 고수들과 전문가들에게 조언을 받아보세요</p>
-        <div class="py-lg-3">
-        <form>
-          <input class=" form-control my-1" type="search" placeholder="Search" aria-label="궁금한 것을 검색해보세요.">
-        </form>
-        </div>
+      	<div class="search py-lg-3">
+			<form name="searchForm" action="BoardServlet" method="post">
+				<input type="hidden" name="command" value="board_list">
+				<input type="hidden" name="currPage" value="${pageHandler.currPage }">
+				<select name="searchType">
+					<option value="title" 
+					${searchVO.searchType == "title" ? "selected='selected'" : "" }>
+					제목</option>
+					<option value="content"
+					${searchVO.searchType == "content" ? "selected='selected'" : "" }>
+					내용</option>
+					<option value="all"
+					${searchVO.searchType == "all" ? "selected='selected'" : "" }>
+					제목+내용</option>
+					<option value="author"
+					${searchVO.searchType == "author" ? "selected='selected'" : "" }>
+					작성자</option>
+				</select> 
+				<input type="text" name="searchText" value="${searchVO.searchText }">
+				<input class="form-control my-1" placeholder="Search" type="submit" aria-label="궁금한 것을 검색해보세요.">
+			</form>
+		</div>
         <p>
           <a href="#" class="btn btn-light my-2 " >#리모델링/올수리</a>
           <a href="#" class="btn btn-light my-2 ">#20평대</a>
@@ -186,7 +231,7 @@
 			</button>
 	    </div>
 	    <div class="col-sm-2">
-	     	<button type="button" class="btn btn-info">질문하기</button>
+	    	<a href="BoardServlet?command=board_write_form"><button type="button" class="btn btn-info">질문하기</button></a>
 	    </div>
 	  </div>
 	 
@@ -242,77 +287,50 @@
 	      	<img src="images/QnA1.jpg" alt="" >
 	      </td>
 	    </tr>
-	    <tr class="QnA">
-	      <td class="py-lg-4">  
-		      <div>
-				<h2 class="lead py-lg-2 fw-bold">당근마켓 뜻이 뭔가요? (왜 당근마켓인가요?)</h2>
-			    <p class="featurette-heading fw-normal py-lg-1 lh-base">
-			        현재는 직거래 뿐만 아니라 여러분의 근처에서 생기는 다양한 일을 해결할 수 있는 서비스를 꿈꾸고 있어요.
-					뿐만 아니라 '당근'의 건강한 이미지도 담아봤어요. '당근'처럼 건강한 서비스가 될 수 있도록 최선을 다할게요!
-				</p>
-				<span class="info">${board.name }</span>
-				<span class="info">날짜<fmt:formatDate value="${board.writedate }"/></span>
-				<span class="info">조회${board.readcount }</span>
-				<div>
-			        <a href="#" class="btn btn-light my-2">#20평대</a>
-			        <a href="#" class="btn btn-light my-2">#아파트</a>
-		        </div>
-			  </div>
-		  </td>
-	      <td class="py-lg-4">
-	      	<img src="images/QnA2.jpg" alt="" >
-	      </td>
-	    </tr>
-	    <tr class="QnA ">
-	      <td class="py-lg-4">  
-		      <div>
-				<h2 class="lead py-lg-2 fw-bold">3평대 방 구조(290*370)</h2>
-			    <p class="featurette-heading fw-normal py-lg-1 lh-base">
-			        현재는 직거래 뿐만 아니라 여러분의 근처에서 생기는 다양한 일을 해결할 수 있는 서비스를 꿈꾸고 있어요.
-					뿐만 아니라 '당근'의 건강한 이미지도 담아봤어요. '당근'처럼 건강한 서비스가 될 수 있도록 최선을 다할게요!
-				</p>
-				<span class="info">${board.name }</span>
-				<span class="info">날짜<fmt:formatDate value="${board.writedate }"/></span>
-				<span class="info">조회${board.readcount }</span>
-				<div>
-					<a href="#" class="btn btn-light my-2">#도배</a>
-					<a href="#" class="btn btn-light my-2" >#리모델링/올수리</a>
-			        <a href="#" class="btn btn-light my-2">#20평대</a>
-		        </div>
-			  </div>
-		  </td>
-	      <td class="py-lg-4">
-	      	<img src="images/QnA3.jpg" alt="" >
-	      </td>
-	    </tr>
-	   	<tr class="QnA">
-	      <td class="py-lg-4">  
-		      <div>
-				<h2 class="lead py-lg-2 fw-bold">안방에둘 중 어떤걸 두면 좋을까요?</h2>
-			    <p class="featurette-heading fw-normal py-lg-1 lh-base">
-			        현재는 직거래 뿐만 아니라 여러분의 근처에서 생기는 다양한 일을 해결할 수 있는 서비스를 꿈꾸고 있어요.
-					뿐만 아니라 '당근'의 건강한 이미지도 담아봤어요. '당근'처럼 건강한 서비스가 될 수 있도록 최선을 다할게요!
-				</p>
-				<span class="info">${board.name }</span>
-				<span class="info">날짜<fmt:formatDate value="${board.writedate }"/></span>
-				<span class="info">조회${board.readcount }</span>
-				<div>
-					<a href="#" class="btn btn-light my-2" >#리모델링/올수리</a>
-		        </div>
-			  </div>
-		  </td>
-	      <td class="py-lg-4">
-	      	<img src="images/QnA4.jpg" alt="" >
-	      </td>
-	    </tr>
 	    </c:forEach>
 	     
 	  </tbody>
 	</table>
+	<div class="paging">
+			<nav aria-label="Page navigation example">
+			  <ul class="pagination justify-content-center">
+			    <li class="page-item">			    	
+			    	<c:if test="${pageHandler.showPrev }">
+						<a class="page-link" href="BoardServlet?command=board_list
+							&currPage=${pageHandler.beginPage - 1 }
+							&pageSize=${pageHandler.pageSize}" 
+							data-page="${pageHandler.beginPage - 1 }">Previous
+						</a>
+					</c:if>
+		    	</li>			    
+			    <c:forEach var="i" begin="${pageHandler.beginPage }" 
+									end="${pageHandler.endPage }">
+				<li class="page-item">
+					<a class="page-link" href="BoardServlet?command=board_list
+						&currPage=${i }&pageSize=${pageHandler.pageSize}"
+						data-page="${i }">${i }
+					</a>
+				</li>
+				</c:forEach>
+			    <li class="page-item">			    	
+			    	<c:if test="${pageHandler.showNext }">
+						<a class="page-link" href="BoardServlet?command=board_list
+							&currPage=${pageHandler.endPage + 1 }
+							&pageSize=${pageHandler.pageSize}"
+							data-page="${pageHandler.endPage + 1 }">Next
+						</a>
+					</c:if>
+		    	</li>
+			  </ul>
+			</nav>
+		</div>
+	
+	
+	
   </div>
  <!-- /공지,QnA 테이블 끝-->
 	<footer >
-	<%@ include file="include_footer.jsp" %> 
+	<%@ include file="../include_footer.jsp" %> 
 	</footer>
 </main>
 

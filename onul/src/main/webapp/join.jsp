@@ -21,11 +21,10 @@
 <!-- Nav -->
 
 
-
 <section>
-  <form id="joinup">
+  <form id="joinup" method="post" action="joinAction.jsp">
       <div>
-      <div class="logo"><a href="#"><img src="images/logo.png" alt="오늘의 집logo">오늘의 집</a></div>
+      <div class="logo"><a href="index.jsp"><img src="images/logo.png" alt="오늘의 집logo">오늘의 집</a></div>
         <h1 class="join_title">회원가입</h1>
         <div class="join_sns">
           <div>SNS계정으로 간편하게 회원가입</div>
@@ -39,52 +38,54 @@
       <fieldset>
         <ul>
           <li>
-            <label for="email">이메일을 입력하세요.</label>
-            <input class="form_control" type="text" id="email" name="email" required autofocus placeholder="이메일">
+            <label for="email">이메일</label>
+            <input class="form_control" type="email" id="userId" name="userId" required autofocus placeholder="이메일">
           </li>
   
           <li>
-            <label for="pwd">비밀번호를 입력하세요.</label>
-            <input type="password" id="pwd" name="pwd" required autofocus placeholder="비밀번호">
+            <label for="pwd">비밀번호</label>
+            <!-- <p class="textS">영문, 숫자를 포함한 8자 이상의 비밀번호를 입력해주세요.</p> -->
+            <input type="password" id="pwd" name="userPwd" required autofocus placeholder="비밀번호">
           </li>
           <li>
-            <label for="name">이름을 입력하세요.</label>
-            <input type="text" id="name" name="name" required autofocus placeholder="홍길동">
+            <label for="name">이름</label>
+            <input type="text" id="name" name="userName" required autofocus placeholder="홍길동">
           </li>
          
           <li>
-            <label for="birth">생년월일을 입력하세요.</label>
-            <input type="text" id="birth" name="birth" required autofocus placeholder="생년월일을 8자리를 입력하세요">
+            <label for="birth">생년월일</label>
+            <input type="text" id="birth" name="userBirth" required autofocus placeholder="생년월일을 8자리를 입력하세요">
           </li>
   
           <li>
-            <label for="tel">전화번호를 입력하세요.</label>
-            <input class="boxS" type="input" id="telno1" name="telno1" maxlength="3" required autofocus placeholder="010"> 
-             -  <input class="boxS" type="input" id="telno2" name="telno2" maxlength="4" required autofocus placeholder="중간 4자리">
-             -  <input class="boxS" type="input" id="telno3" name="telno3" maxlength="4" required autofocus placeholder="끝 4자리">
+            <label for="tel">전화번호</label>
+            <input type="input" id="tel" name="userTel" maxlength="13" required autofocus placeholder="예시 : 010-1234-5678"> 
+             <!--
+             -  <input class="boxS" type="input" id="telno2" name="userTelno2" maxlength="4" required autofocus placeholder="중간 4자리">
+             -  <input class="boxS" type="input" id="telno3" name="userTelno3" maxlength="4" required autofocus placeholder="끝 4자리">
+             -->
           </li>
   
           <li>
-            <label for="addr">주소를 입력하세요.</label>
-            <input type="text" id="addr" name="addr" required autofocus placeholder="서울특별시 00구 000동 000-0">
+            <label for="addr">주소</label>
+            <input type="text" id="addr" name="userAddr" required autofocus placeholder="서울특별시 00구 000동 000-0">
           </li>
-          <label>약관동의</label>
+          <!-- <label>약관동의</label>
           <li class="agreement">
             <p class="allAgree"><input type="checkbox" value="전체동의" id="check_all"> 전체동의</p>
             <p><input type="checkbox"  class="normal"> 만 14세 이상입니다<b class="blue"> (필수)</b></p>
             <p><input type="checkbox"  class="normal"> 이용약관<b class="blue"> (필수)</b></p>
             <p><input type="checkbox"  class="normal"> 개인정보수집 및 이용동의<b class="blue"> (필수)</b></p>
             <p><input type="checkbox"  class="normal"> 이벤트, 쿠폰, 특가 알림 메일 및 SMS 등 수신(선택)</p>
-          </li>
+          </li> -->
         </ul>
     <button class="sign_up" type="submit">회원가입하기</button>
       </fieldset>
-        <h3 class="gotologin">이미 아이디가 있으신가요? <a href="login.jsp"><b>로그인</b></a></h3>
+        <h3 class="gotologin">이미 아이디가 있으신가요? <a href="submit.jsp"><b>로그인</b></a></h3>
     
   
   </form>
 </section>
 
-<%@ include file="include_footer.jsp" %> 
 </body>
 </html>

@@ -33,6 +33,15 @@ public class ActionFactory {
 		Action action = null;
 		System.out.println("ActionFactory :" + command);
 		
+		 
+	        if(command.equals("command")){
+	            System.out.println("일치");   
+	        }else {
+	            System.out.println("불일치");
+	        }
+	
+		
+		
 		if(command.equals("board_list")) {
 			action = new BoardListAction();
 		} else if(command.equals("board_write_form")) {

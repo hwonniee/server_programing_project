@@ -37,7 +37,7 @@ public class BoardDAO {
 			
 			while(rs.next()) {
 				BoardVO bVo = new BoardVO();
-				
+
 				bVo.setNum(rs.getInt("num"));
 				bVo.setName(rs.getString("name"));
 				bVo.setEmail(rs.getString("email"));
@@ -46,6 +46,7 @@ public class BoardDAO {
 				bVo.setContent(rs.getString("content"));
 				bVo.setReadcount(rs.getInt("readcount"));
 				bVo.setWritedate(rs.getTimestamp("writedate"));
+				bVo.setImg(rs.getString("img"));
 				
 				list.add(bVo);
 			}
@@ -56,6 +57,7 @@ public class BoardDAO {
 		}
 		return list;
 	}
+	
 	
 	// 게시판 글 상세 내용 보기 : 글번호로 찾아온다. : 실패 null
 	public BoardVO selectOneBoardByNum(String num) {
@@ -84,6 +86,8 @@ public class BoardDAO {
 				bVo.setContent(rs.getString("content"));
 				bVo.setWritedate(rs.getTimestamp("writedate"));
 				bVo.setReadcount(rs.getInt("readcount"));
+				bVo.setImg(rs.getString("img"));
+				
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -115,7 +119,7 @@ public class BoardDAO {
 	
 	// 게시글 등록
 	public void insertBoard(BoardVO bVo) {
-		String sql = "INSERT INTO BOARD(NAME, EMAIL, PASS, TITLE, CONTENT) " +
+		String sql = "INSERT INTO BOARD(NAME, EMAIL, PASS, TITLE, CONTENT, IMG) " +
 				"VALUES(?,?,?,?,?)";
 		
 		Connection conn = null;
@@ -131,6 +135,7 @@ public class BoardDAO {
 			pstmt.setString(3, bVo.getPass());
 			pstmt.setString(4, bVo.getTitle());
 			pstmt.setString(5, bVo.getContent());
+			pstmt.setString(6, bVo.getImg());
 			
 			pstmt.executeUpdate();
 		} catch (Exception e) {
@@ -143,7 +148,7 @@ public class BoardDAO {
 	// 게시글 수정
 	public void updateBoard(BoardVO bVo) {
 		String sql = "UPDATE BOARD SET NAME = ?, EMAIL = ?, PASS = ?, "
-						+ "TITLE = ?, CONTENT = ? WHERE NUM = ?";
+						+ "TITLE = ?, CONTENT = ?, IMG = ? WHERE NUM = ?";
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -158,6 +163,7 @@ public class BoardDAO {
 			pstmt.setString(4, bVo.getTitle());
 			pstmt.setString(5, bVo.getContent());
 			pstmt.setInt(6, bVo.getNum());
+			pstmt.setString(7, bVo.getImg());
 			
 			pstmt.executeUpdate();
 		} catch (Exception e) {
@@ -195,6 +201,7 @@ public class BoardDAO {
 				bVo.setContent(rs.getString("content"));
 				bVo.setReadcount(rs.getInt("readcount"));
 				bVo.setWritedate(rs.getTimestamp("writedate"));
+				bVo.setImg(rs.getString("img"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -339,6 +346,7 @@ public class BoardDAO {
 				bVo.setContent(rs.getString("content"));
 				bVo.setReadcount(rs.getInt("readcount"));
 				bVo.setWritedate(rs.getTimestamp("writedate"));
+				bVo.setImg(rs.getString("img"));
 				
 				list.add(bVo);
 			}
@@ -349,19 +357,6 @@ public class BoardDAO {
 		}
 		return list;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 }
 

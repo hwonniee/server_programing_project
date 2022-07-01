@@ -42,6 +42,7 @@
           font-size: 3.5rem;
         }
       }
+      
     </style>
 
     
@@ -64,14 +65,19 @@
 
 <main>
 
-  <section class="py-5 text-center container">
+  <section class="py-5 container">
     <div class="row py-lg-5">
-      <div class="col-lg-6 col-md-8 mx-auto">
-        <h1 class="fw-light">질문과 답변 글 작성 가이드</h1>
-        <li> 참고가 되는 사진을 같이 공유해주시면 더 좋은 답변을 얻을 수 있습니다. </li>
-        <li> 비슷한 어려움을 겪는 유저를 위해 답변자에게 포인트를 지급하며, 답변이 달린 질문글은 삭제할 수 없습니다.</li>
-        <li> 인테리어와 관련 없는 질문은 숨김 및 삭제될 수 있습니다. </li>
-        <li> 상품/배송 등 쇼핑 관련 문의는 고객센터에서 요청해주세요. </li>
+      <div class="col-lg-6 col-md-8 mx-auto card">
+      <div class="card-body">
+        <h1 class="fw-light text-center">질문과 답변 글 작성 가이드</h1>
+        <p class="text-left py-lg-1 ">
+        <li class="py-lg-1"> 참고가 되는 사진을 같이 공유해주시면 더 좋은 답변을 얻을 수 있습니다. </li>
+        <li class="py-lg-1"> 비슷한 어려움을 겪는 유저를 위해 답변자에게 포인트를 지급하며, 답변이 달린 질문글은 삭제할 수 없습니다.</li>
+        <li class="py-lg-1"> 인테리어와 관련 없는 질문은 숨김 및 삭제될 수 있습니다. </li>
+        <li class="py-lg-1"> 상품/배송 등 쇼핑 관련 문의는 고객센터에서 요청해주세요. </li>
+        </p>
+        </div>
+      
       </div>
     </div>
   </section>

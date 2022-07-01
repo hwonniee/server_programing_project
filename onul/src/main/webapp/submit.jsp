@@ -21,7 +21,7 @@
   <section>
     <form id="signup" method="post" action="submitAction.jsp">
       <img class="logo_image" src="images/logo.png">
-      <span class="logo"><a href="index.html">오늘의 집</a></span>
+      <span class="logo"><a href="index.jsp">오늘의 집</a></span>
   
       <fieldset>
         <ul>
@@ -30,13 +30,13 @@
             <input type="text" id="userId" name="userId" required autofocus placeholder="이메일" >
           </li>
           <li>
-            <label for="pwd"></label>
-            <input type="password" id="pwd" name="pwd" required autofocus placeholder="비밀번호">
+            <label for="userPwd"></label>
+            <input type="password" id="pwd" name="userPwd" required autofocus placeholder="비밀번호">
           </li>
         </ul>
         <button type="submit">로그인</button>
         <p><a href="#">비밀번호 재설정</a></p>
-        <p><a href="#">회원가입</a></p>
+        <p><a href="join.jsp">회원가입</a></p>
       </fieldset>
       <div class="join">
         <div class="join_sns">

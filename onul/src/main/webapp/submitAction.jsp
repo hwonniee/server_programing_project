@@ -5,19 +5,31 @@
 <% request.setCharacterEncoding("UTF-8"); %>
 <jsp:useBean id="user" class="user.UserVO" scope="page" />
 <jsp:setProperty name="user" property="userId" />
-<jsp:setProperty name="user" property="pwd" />
+<jsp:setProperty name="user" property="userPwd" />
 
 <!DOCTYPE html>
-<html lang="ko">
+<html>
 <head>
 <title>오늘의 집 참고 jsp 구현 - 로그인</title>
 </head>
 <body>
 
 <%
+	String userId = null;
+	if(session.getAttribute("userId") != null){
+		userId = (String)session.getAttribute("userId");
+	}
+	if(userId != null){
+		PrintWriter script = response.getWriter();
+		script.println("<script>");
+		script.println("alert('이미 로그인이 되어있습니다.')");
+		script.println("location.href = 'index.jsp'");
+		script.println("</script>");	
+	}
 	UserDAO userDAO = new UserDAO();
-	int result = userDAO.login(user.getUserId(), user.getPwd());
+	int result = userDAO.login(user.getUserId(), user.getUserPwd());
 	if(result == 1){
+		session.setAttribute("userID", user.getUserId());
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
 		script.println("location.href = 'index.jsp'");
