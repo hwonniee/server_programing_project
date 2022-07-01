@@ -240,9 +240,9 @@
 				 미답변 
 				</button>
 			</div>
-			<div class="col-sm-2">
-				<a href="BoardServlet?command=board_write_form"><button type="button" class="btn btn-info">질문하기</button></a>
-			</div>
+				<div class="col-sm-2">
+					<a href="BoardServlet?command=board_write_form"><button type="button" class="btn btn-info">질문하기</button></a>
+				</div>
 		  </div>
 		 
 	

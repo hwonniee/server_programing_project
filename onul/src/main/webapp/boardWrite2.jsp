@@ -103,12 +103,12 @@
 						</td>
 					</tr>
 					<tr>
-						<th>제목</th>
-						<td><input type="text" class="form-control" required autofocus placeholder="글 제목" name="title" maxlength="50">* 필수</td>
+						<th>이메일</th>
+						<td><input type="text" class="form-control" placeholder="이메일" name="email"></td>
 					</tr>
 					<tr>
-						<th>첨부파일</th>
-						<td><input type="text" class="form-control" placeholder="이미지" name="img"></td>
+						<th>제목</th>
+						<td><input type="text" class="form-control" required autofocus placeholder="글 제목" name="title" maxlength="50">* 필수</td>
 					</tr>
 					<tr>
 						<th>내용</th>
