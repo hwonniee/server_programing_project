@@ -55,7 +55,7 @@
 
     
   </head>
-  <body >
+<body>
     
 <header>
 <%@ include file="include_header2.jsp" %>  
@@ -82,7 +82,7 @@
 	<div class="row">
 	<div id="wrap" align="center" >
 		
-		<form name="frm" method="post" action="boardWriteAction.jsp" action="BoardServlet">
+		<form name="frm" method="post" action="BoardServlet">
 			<input type="hidden" name="command" value="board_write">
 			<table class="table" style="text-align:center; border: 1px solid #dddddd">
 				<thead>
@@ -119,9 +119,9 @@
 				</tbody>
 			</table>
 			<br><br>
-			<input type="submit" class="btn btn-info pull-right " style="margin: 10px;" value="등록" onclick="return boardCheck()">
-			<input type="reset" class="btn btn-outline-info btn-light pull-right" style="margin: 10px;" value="다시 작성">
-			<input type="button" class="btn btn-outline-info btn-light pull-right" style="margin: 10px;" value="목록" 
+			<input type="submit" class="btn btn-info pull-right fw-bold" style="margin: 10px;" value="등록" onclick="return boardCheck()">
+			<input type="reset" class="btn btn-outline-info fw-bold btn-light pull-right" style="margin: 10px;" value="다시 작성">
+			<input type="button" class="btn btn-outline-info fw-bold btn-light pull-right" style="margin: 10px;" value="목록" 
 				onclick="location.href='BoardServlet?command=board_list
 				&currPage=${currPage}&searchType=${searchVO.searchType }
 				&searchText=${searchVO.searchText }'">
@@ -129,9 +129,9 @@
 	</div>
 	</div>
 </div>
-	<footer class="text-muted py-5">
-		<%@ include file="include_footer.jsp" %> 
-	</footer>
+<footer class="text-muted py-5">
+	<%@ include file="include_footer.jsp" %> 
+</footer>
 
 
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>

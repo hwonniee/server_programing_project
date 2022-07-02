@@ -1,6 +1,7 @@
 package com.board.controller.action;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.board.dao.BoardDAO;
 import com.board.vo.BoardVO;
 import com.board.vo.SearchVO;
+
 
 public class BoardWriteAction implements Action {
 
@@ -41,6 +43,10 @@ public class BoardWriteAction implements Action {
 		
 		// insert 후 게시글 목록으로 이동 
 		new BoardListAction().execute(request, response);
+		
+		
 	}
+
+		
 
 }

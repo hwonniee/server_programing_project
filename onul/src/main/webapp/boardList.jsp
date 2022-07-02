@@ -82,7 +82,7 @@
 
     .contents{
     	width:750px;
-    	max-height:2028px;
+    	
     	margin: 30px auto;
     	position: relative;
     }
@@ -176,7 +176,7 @@
 		<div class="row py-lg-5">
 		  <div class="col-lg-6 col-md-8 mx-auto">
 			<h1 class="fs-3 py-lg-2 fw-bold">질문과 답변</h1>
-			<p class="fs-8 py-lg-2">오늘의집 인테리어 고수들과 전문가들에게 조언을 받아보세요</p>
+			<p class="fs-8 py-lg-2 ">오늘의집 인테리어 고수들과 전문가들에게 조언을 받아보세요</p>
 			  <div class="search py-lg-3">
 				<form name="searchForm search py-lg-3" action="BoardServlet" method="post">
 				 	<input type="hidden" name="command" value="board_list">
@@ -222,7 +222,7 @@
 		  <div class="row">
 			<div class="col-sm-8">
 				<div class="dropdown">
-				  <button class="btn btn-light btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+				  <button class="btn btn-light btn-outline-secondary dropdown-toggle fw-bold" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
 					인기순
 				  </button>
 				  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
@@ -232,7 +232,7 @@
 				</div>
 			</div>
 			<div class="col-sm-2">
-				<button type="button" class="btn btn-light btn-outline-secondary">
+				<button type="button" class="btn btn-light btn-outline-secondary fw-bold">
 				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
 				  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
 				  <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
@@ -240,11 +240,24 @@
 				 미답변 
 				</button>
 			</div>
-			<form name="frm" method="post" action="boardWriteAction.jsp">
+			<%
+		    	if(userId == null) {
+		    %>
+			<form name="frm" method="post" action="boardListAction.jsp">
 				<div class="col-sm-2">
-					<a href="BoardServlet?command=board_write_form"><button type="submit" class="btn btn-info">질문하기</button></a>
+					<button type="submit" class="btn btn-info fw-bold" style="color:white;">질문하기</button></a>
 				</div>
 			</form>
+		    <%
+		    	} else {
+		    %>
+		    	<div class="col-sm-2">
+					<a href="BoardServlet?command=board_write_form"><button type="submit" class="btn btn-info fw-bold" style="color:white;">질문하기</button></a>
+				</div>
+		    <%
+		    	}
+		    %>
+			
 		  </div>
 		 
 	
