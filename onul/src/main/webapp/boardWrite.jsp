@@ -51,7 +51,6 @@
           font-size: 3.5rem;
         }
       }
-      
     </style>
 
     
@@ -67,8 +66,10 @@
     <div class="row py-lg-5">
       <div class="col-lg-6 col-md-8 mx-auto card">
       <div class="card-body">
-        <h1 class="fw-light text-center">질문과 답변 글 작성 가이드</h1>
-        <p class="text-left py-lg-1 ">
+        <h1 class="fw-bold text-left fs-5" >
+    	<img src="images/QnA_icon.png">
+        질문과 답변 글 작성 가이드</h1>
+        <p class="text-left py-lg-2 ">
         <li class="py-lg-1"> 참고가 되는 사진을 같이 공유해주시면 더 좋은 답변을 얻을 수 있습니다. </li>
         <li class="py-lg-1"> 비슷한 어려움을 겪는 유저를 위해 답변자에게 포인트를 지급하며, 답변이 달린 질문글은 삭제할 수 없습니다.</li>
         <li class="py-lg-1"> 인테리어와 관련 없는 질문은 숨김 및 삭제될 수 있습니다. </li>
@@ -85,40 +86,33 @@
 		
 		<form name="frm" method="post" action="BoardServlet">
 			<input type="hidden" name="command" value="board_write">
-			<input type="hidden" name="name" value="<%= userId %>">
-			<table class="table" style="text-align:center; border: 1px solid #dddddd">
-				<thead>
-						<tr>
-							<td colspan="2" style="background-color: #eeeeee; text-align: center;">게시판 글쓰기</td>
-						</tr>
-				</thead>
+			<input type="hidden" name="name" value="${userId }">
+			<table class="table" style="text-align:center;">
 				<tbody>
-				
-				
 				<form class="row g-3 needs-validation" novalidate>
-
-						<th>비밀번호</th>
-						<td><input type="password" class="form-control" required autofocus placeholder="비밀번호" name="pass">
-							* 필수 (게시물 수정 삭제시 필요합니다.)
-						</td>
-					</tr>
 					<tr>
 						<th>제목</th>
 						<td><input type="text" class="form-control" required autofocus placeholder="글 제목" name="title" maxlength="50">* 필수</td>
 					</tr>
 					<tr>
-						<th>첨부파일</th>
+						<th>첨부사진</th>
 						<td><input type="text" class="form-control" placeholder="이미지" name="img"></td>
 					</tr>
 					<tr>
 						<th>내용</th>
-						<td><textarea class="form-control" placeholder="글 내용" name="content" maxlength="2048" style="height:340px;">></textarea></td>
+						<td><textarea class="form-control" placeholder="글 내용" name="content" maxlength="2048" style="height:340px;"></textarea></td>
+					</tr>
+					<tr>
+						<th>비밀번호</th>
+						<td><input type="password" class="form-control" required autofocus placeholder="비밀번호" name="pass">
+							* 필수 (게시물 수정 삭제시 필요합니다.)
+						</td>
 					</tr>
 					</form>
 				</tbody>
 			</table>
 			<br><br>
-			<input type="submit" class="btn btn-info pull-right fw-bold" style="margin: 10px;" value="등록" onclick="return boardCheck()">
+			<input type="submit" class="btn btn-info pull-right fw-bold btn-outline-light" style="margin: 10px;" value="등록" onclick="return boardCheck()">
 			<input type="reset" class="btn btn-outline-info fw-bold btn-light pull-right" style="margin: 10px;" value="다시 작성">
 			<input type="button" class="btn btn-outline-info fw-bold btn-light pull-right" style="margin: 10px;" value="목록" 
 				onclick="location.href='BoardServlet?command=board_list

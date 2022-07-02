@@ -167,8 +167,9 @@
 
     
  
-
-   <%@ include file="include_header2.jsp" %>  
+	<header>
+		<%@ include file="include_header2.jsp" %>  
+	</header>
 
    <main>
 	<!-- 검색 -->
@@ -243,8 +244,8 @@
 			<%
 		    	if(userId == null) {
 		    %>
-			<form name="frm" method="post" action="boardListAction.jsp">
-				<div class="col-sm-2">
+			<form class="col-sm-2" name="frm" method="post" action="boardListAction.jsp">
+				<div>
 					<button type="submit" class="btn btn-info fw-bold" style="color:white;">질문하기</button></a>
 				</div>
 			</form>
@@ -312,7 +313,7 @@
 				  </div>
 			  </td>
 			  <td class="py-lg-4">
-				  <img src="${board.img }" alt="" >
+			 	<img src="${board.img }" alt="첨부사진" >
 			  </td>
 			</tr>
 			</c:forEach>
@@ -354,10 +355,12 @@
 			</div>
 	  </div>
 	  <!-- /공지,QnA 테이블 끝-->
-</main>
+	</main>
 	
-
-	<%@ include file="include_footer.jsp" %> 
+	<footer>
+		<%@ include file="include_footer.jsp" %> 
+	</footer>
+	
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
   </body>
 </html>
