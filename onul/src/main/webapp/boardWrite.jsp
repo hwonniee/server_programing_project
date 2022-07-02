@@ -1,3 +1,4 @@
+<%@page import="user.UserDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -84,6 +85,7 @@
 		
 		<form name="frm" method="post" action="BoardServlet">
 			<input type="hidden" name="command" value="board_write">
+			<input type="hidden" name="name" value="<%= userId %>">
 			<table class="table" style="text-align:center; border: 1px solid #dddddd">
 				<thead>
 						<tr>
@@ -91,12 +93,9 @@
 						</tr>
 				</thead>
 				<tbody>
+				
+				
 				<form class="row g-3 needs-validation" novalidate>
-					<tr>
-						<th>작성자</th>
-						<td><input type="text" class="form-control" required autofocus placeholder="작성자" name="name"> * 필수</td>
-					</tr>
-					<tr>
 
 						<th>비밀번호</th>
 						<td><input type="password" class="form-control" required autofocus placeholder="비밀번호" name="pass">
