@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>  
 <!doctype html>
 <html lang="ko">
@@ -241,12 +242,13 @@
 				 미답변 
 				</button>
 			</div>
+			
 			<%
 		    	if(userId == null) {
 		    %>
 			<form class="col-sm-2" name="frm" method="post" action="boardListAction.jsp">
 				<div>
-					<button type="submit" class="btn btn-info fw-bold" style="color:white;">질문하기</button></a>
+					<button type="submit" class="btn btn-info fw-bold" style="color:white;">질문하기</button>
 				</div>
 			</form>
 		    <%
@@ -298,9 +300,9 @@
 					<a href="BoardServlet?command=board_view&num=${board.num }&currPage=${pageHandler.currPage}&searchType=${searchVO.searchType}&searchText=${searchVO.searchText}">
 					<h2 class="lead py-lg-2 fw-bold">${board.title }</h2>
 					<p class="featurette-heading fw-normal py-lg-1 lh-base">
-					  ${board.content }
+					  ${fn:substring(board.content,0,100) }
 					</p>
-					<span class="info">${board.name }</span>
+					<span class="info">${fn:split(board.name,'@')[0]}</span>
 					<span class="info">날짜<fmt:formatDate value="${board.writedate }"/></span>
 					<span class="info">조회${board.readcount }</span>
 					</a>
@@ -313,7 +315,11 @@
 				  </div>
 			  </td>
 			  <td class="py-lg-4">
-			 	<img src="${board.img }" alt="첨부사진" >
+			  <c:choose>
+						<c:when test="${board.img != ''}" >
+							<img src="${board.img }" alt="첨부사진" >
+				   		</c:when>
+			  </c:choose>
 			  </td>
 			</tr>
 			</c:forEach>

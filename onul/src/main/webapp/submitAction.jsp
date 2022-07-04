@@ -29,7 +29,7 @@
 	UserDAO userDAO = new UserDAO();
 	int result = userDAO.login(user.getUserId(), user.getUserPwd());
 	if(result == 1){
-		session.setAttribute("userID", user.getUserId());
+		session.setAttribute("userId", user.getUserId());
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
 		script.println("location.href = 'index.jsp'");

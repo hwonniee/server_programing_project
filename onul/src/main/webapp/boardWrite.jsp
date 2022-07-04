@@ -83,10 +83,13 @@
   <div class="container">
 	<div class="row">
 	<div id="wrap" align="center" >
-		
+	
+
+	
 		<form name="frm" method="post" action="BoardServlet">
 			<input type="hidden" name="command" value="board_write">
-			<input type="hidden" name="name" value="${userId }">
+			
+			<input type="hidden" name="name" value="${userId}">
 			<table class="table" style="text-align:center;">
 				<tbody>
 				<form class="row g-3 needs-validation" novalidate>
@@ -114,10 +117,8 @@
 			<br><br>
 			<input type="submit" class="btn btn-info pull-right fw-bold btn-outline-light" style="margin: 10px;" value="등록" onclick="return boardCheck()">
 			<input type="reset" class="btn btn-outline-info fw-bold btn-light pull-right" style="margin: 10px;" value="다시 작성">
-			<input type="button" class="btn btn-outline-info fw-bold btn-light pull-right" style="margin: 10px;" value="목록" 
-				onclick="location.href='BoardServlet?command=board_list
-				&currPage=${currPage}&searchType=${searchVO.searchType }
-				&searchText=${searchVO.searchText }'">
+			<input class="btn btn-light btn-outline-info pull-right fw-bold " style="margin:10px;" type="button" value="목록" 
+			onclick="location.href=encodeURI('BoardServlet?command=board_list&currPage=${currPage}&searchType=${searchVO.searchType }&searchText=${searchVO.searchText }')">	
 		</form>
 	</div>
 	</div>
@@ -129,4 +130,4 @@
 
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
   </body>
-</html>tml>
+</html>
